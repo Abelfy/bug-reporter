@@ -36,7 +36,28 @@
         "targetName": "test"
       },
       "exclude": ["apps/server-e2e/**/*"]
+    },
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
     }
   ],
-  "nxCloudAccessToken": "MjU2MmFhNDEtZGY3Ny00NmFmLTg5MWMtY2NlYzRlZTA2MDFlfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "MjU2MmFhNDEtZGY3Ny00NmFmLTg5MWMtY2NlYzRlZTA2MDFlfHJlYWQtd3JpdGU=",
+  "targetDefaults": {
+    "@angular-devkit/build-angular:application": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  },
+  "generators": {
+    "@nx/angular:application": {
+      "e2eTestRunner": "playwright",
+      "linter": "eslint",
+      "style": "scss",
+      "unitTestRunner": "jest"
+    }
+  }
 }
